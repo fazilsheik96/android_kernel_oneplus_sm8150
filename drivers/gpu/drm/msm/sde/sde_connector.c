@@ -548,6 +548,11 @@ int sde_connector_update_backlight(struct drm_connector *connector)
 
 extern int dsi_panel_tx_cmd_set(struct dsi_panel *panel,
 				enum dsi_cmd_set_type type);
+
+extern int __dsi_panel_tx_cmd_set(struct dsi_panel *panel,
+				enum dsi_cmd_set_type type,
+				bool fod_usage);
+
 static int _sde_connector_update_hbm(struct sde_connector *c_conn)
 {
 	struct drm_connector *connector = &c_conn->base;
@@ -616,19 +621,19 @@ static int _sde_connector_update_hbm(struct sde_connector *c_conn)
 			mutex_lock(&dsi_display->panel->panel_lock);
 			if (dsi_display->panel->aod_status == 1 && !finger_type) {
 				if (dsi_display->panel->aod_mode == 2) {
-					rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_AOD_OFF_HBM_ON_SETTING);
+					dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_AOD_OFF_HBM_ON_SETTING);
 					pr_err("Send DSI_CMD_AOD_OFF_HBM_ON_SETTING cmds\n");
 				} else {
-					rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_REAL_AOD_OFF_HBM_ON_SETTING);
+					dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_REAL_AOD_OFF_HBM_ON_SETTING);
 					pr_err("Send DSI_CMD_REAL_AOD_OFF_HBM_ON_SETTING cmds\n");
 				}
 				aod_fod_flag = true;
 			} else if (dsi_display->panel->aod_status == 1 && finger_type) {
-				rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_AOD_OFF_NEW);
+				dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_AOD_OFF_NEW);
 				pr_err("qdt aod off\n");
 			} else {
 				//sde_encoder_poll_line_counts(drm_enc);
-				rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_HBM_ON_5);
+				__dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_HBM_ON_5, true);
 				pr_err("Send DSI_CMD_SET_HBM_ON_5 cmds\n");
 			}
 			SDE_ATRACE_END("set_hbm_on");
@@ -644,7 +649,7 @@ static int _sde_connector_update_hbm(struct sde_connector *c_conn)
 			mutex_lock(&dsi_display->panel->panel_lock);
 			if (dsi_display->panel->aod_status == 1 && !finger_type) {
 				if (oneplus_dim_status == 5) {
-					rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_HBM_OFF);
+					dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_HBM_OFF);
 					pr_err("Send DSI_CMD_SET_HBM_OFF cmds\n");
 					aod_fod_flag = true;
 					dsi_display->panel->aod_status = 0;
@@ -663,7 +668,7 @@ static int _sde_connector_update_hbm(struct sde_connector *c_conn)
 							pr_err("Send DSI_CMD_SET_AOD_ON_3 cmds\n");
 						}
 					} else if (oneplus_onscreenfp_status == 0) {
-						rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_HBM_OFF_AOD_ON_SETTING);
+						dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_HBM_OFF_AOD_ON_SETTING);
 						aod_layer_hide = 1;
 						pr_err("Send DSI_CMD_HBM_OFF_AOD_ON_SETTING  cmds\n");
 					}
@@ -684,10 +689,6 @@ static int _sde_connector_update_hbm(struct sde_connector *c_conn)
 			SDE_ATRACE_END("set_hbm_off");
 			mutex_unlock(&dsi_display->panel->panel_lock);
 			_sde_connector_update_bl_scale(c_conn);
-			if (rc) {
-				pr_err("failed to send DSI_CMD_HBM_OFF cmds, rc=%d\n", rc);
-				return rc;
-			}
 		}
 	}
 	return 0;
