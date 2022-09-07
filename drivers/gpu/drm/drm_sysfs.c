@@ -1217,29 +1217,6 @@ static ssize_t oneplus_display_set_forcescreenfp(struct device *dev,
 	return count;
 }
 
-int oneplus_auth_status = 0;
-int oneplus_panel_status = 0;
-static ssize_t op_display_get_auth_status(struct device *dev,
-				struct device_attribute *attr, char *buf)
-{
-	return sprintf(buf, "%d\n", oneplus_auth_status);
-}
-
-static ssize_t op_display_set_auth_status(struct device *dev,
-				struct device_attribute *attr,
-				const char *buf, size_t count)
-{
-	sscanf(buf, "%d", &oneplus_auth_status);
-
-	return count;
-}
-
-static ssize_t op_display_get_power_status(struct device *dev,
-				struct device_attribute *attr, char *buf)
-{
-	return sprintf(buf, "%d\n", oneplus_panel_status);
-}
-
 static ssize_t op_display_get_dimlayer_enable(struct device *dev,
 					      struct device_attribute *attr,
 					      char *buf)
