@@ -225,8 +225,6 @@ source "drivers/sensors/Kconfig"
 
 source "drivers/esoc/Kconfig"
 
-source "techpack/data/drivers/Kconfig"
-
 source "drivers/tri_state_key/Kconfig"
 
 source "drivers/vibrator/Kconfig"
