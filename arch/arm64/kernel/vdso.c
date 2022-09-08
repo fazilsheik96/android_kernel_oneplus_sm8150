@@ -105,13 +105,6 @@ static int __init alloc_vectors_page(void)
 	}
 #endif
 
-#ifndef CONFIG_VDSO32
-	/* sigreturn code */
-	memcpy((void *)sigret_vpage, __aarch32_sigret_code_start, sigret_sz);
-	flush_icache_range(sigret_vpage, sigret_vpage + PAGE_SIZE);
-	vectors_page[0] = virt_to_page(sigret_vpage);
-#endif
-
 #ifdef CONFIG_KUSER_HELPERS
 	/* kuser helpers */
 	memcpy((void *)kuser_vpage + 0x1000 - kuser_sz, __kuser_helper_start,
