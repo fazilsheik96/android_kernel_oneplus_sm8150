@@ -3518,8 +3518,6 @@ extern bool backup_dimlayer_hbm;
 extern bool HBM_flag;
 extern int dsi_panel_tx_cmd_set(struct dsi_panel *panel,
 				enum dsi_cmd_set_type type);
-extern int __dsi_panel_tx_cmd_set (struct dsi_panel *panel, enum dsi_cmd_set_type type,
-					bool fod_usage);
 int oneplus_dim_status = 0;
 int oneplus_aod_fod = 0;
 int oneplus_aod_dc = 0;
@@ -3583,7 +3581,7 @@ ssize_t oneplus_display_notify_dim(struct device *dev,
 	pr_err("notify dim %d,aod = %d press= %d aod_hide =%d oneplus_dimlayer_hbm_enable = %d\n",
 	       oneplus_dim_status, dsi_display->panel->aod_status, oneplus_onscreenfp_status, aod_layer_hide, oneplus_dimlayer_hbm_enable);
 	if (oneplus_dim_status == 1 && HBM_flag) {
-		rc = __dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_HBM_ON_5, true);
+		rc = dsi_panel_tx_cmd_set(dsi_display->panel, DSI_CMD_SET_HBM_ON_5);
 		if (rc) {
 			pr_err("failed to send DSI_CMD_SET_HBM_ON_5 cmds, rc=%d\n", rc);
 			return rc;
