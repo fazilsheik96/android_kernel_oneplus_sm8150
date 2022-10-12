@@ -1,0 +1,1110 @@
+dsi_panel.c:	for (i = 0; i < panel->power_info.count; i++) {
+dsi_panel.c:		vreg = devm_regulator_get(panel->parent,
+dsi_panel.c:					  panel->power_info.vregs[i].vreg_name);
+dsi_panel.c:			       panel->power_info.vregs[i].vreg_name);
+dsi_panel.c:		panel->power_info.vregs[i].vreg = vreg;
+dsi_panel.c:		devm_regulator_put(panel->power_info.vregs[i].vreg);
+dsi_panel.c:		panel->power_info.vregs[i].vreg = NULL;
+dsi_panel.c:	for (i = panel->power_info.count - 1; i >= 0; i--)
+dsi_panel.c:		devm_regulator_put(panel->power_info.vregs[i].vreg);
+dsi_panel.c:	struct dsi_panel_reset_config *r_config = &panel->reset_config;
+dsi_panel.c:	if (gpio_is_valid(panel->bl_config.en_gpio)) {
+dsi_panel.c:		rc = gpio_request(panel->bl_config.en_gpio, "bklt_en_gpio");
+dsi_panel.c:	if (gpio_is_valid(panel->poc)) {
+dsi_panel.c:		rc = gpio_request(panel->poc, "platform_poc_gpio");
+dsi_panel.c:	if (gpio_is_valid(panel->vddd_gpio)) {
+dsi_panel.c:		rc = gpio_request(panel->vddd_gpio, "vddd_gpio");
+dsi_panel.c:	if (gpio_is_valid(panel->tp1v8_gpio)) {
+dsi_panel.c:		rc = gpio_request(panel->tp1v8_gpio, "tp1v8_gpio");
+dsi_panel.c:	if (gpio_is_valid(panel->vddd_gpio))
+dsi_panel.c:		gpio_free(panel->vddd_gpio);
+dsi_panel.c:	if (gpio_is_valid(panel->poc))
+dsi_panel.c:		gpio_free(panel->poc);
+dsi_panel.c:	if (gpio_is_valid(panel->bl_config.en_gpio))
+dsi_panel.c:		gpio_free(panel->bl_config.en_gpio);
+dsi_panel.c:	struct dsi_panel_reset_config *r_config = &panel->reset_config;
+dsi_panel.c:	if (gpio_is_valid(panel->bl_config.en_gpio))
+dsi_panel.c:		gpio_free(panel->bl_config.en_gpio);
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.lcd_mode_sel_gpio))
+dsi_panel.c:		gpio_free(panel->reset_config.lcd_mode_sel_gpio);
+dsi_panel.c:	if (gpio_is_valid(panel->poc))
+dsi_panel.c:		gpio_free(panel->poc);
+dsi_panel.c:	if (gpio_is_valid(panel->vddd_gpio))
+dsi_panel.c:		gpio_free(panel->vddd_gpio);
+dsi_panel.c:	if (gpio_is_valid(panel->tp1v8_gpio))
+dsi_panel.c:		gpio_free(panel->tp1v8_gpio);
+dsi_panel.c:	r_config = &panel->reset_config;
+dsi_panel.c:	struct dsi_panel_reset_config *r_config = &panel->reset_config;
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.disp_en_gpio)) {
+dsi_panel.c:		rc = gpio_direction_output(panel->reset_config.disp_en_gpio, 1);
+dsi_panel.c:	if (gpio_is_valid(panel->bl_config.en_gpio)) {
+dsi_panel.c:		rc = gpio_direction_output(panel->bl_config.en_gpio, 1);
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.lcd_mode_sel_gpio)) {
+dsi_panel.c:		if ((panel->reset_config.mode_sel_state == MODE_SEL_DUAL_PORT)
+dsi_panel.c:				|| (panel->reset_config.mode_sel_state
+dsi_panel.c:		else if ((panel->reset_config.mode_sel_state
+dsi_panel.c:				(panel->reset_config.mode_sel_state
+dsi_panel.c:			panel->reset_config.lcd_mode_sel_gpio, out);
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:		state = panel->pinctrl.active;
+dsi_panel.c:		state = panel->pinctrl.suspend;
+dsi_panel.c:	rc = pinctrl_select_state(panel->pinctrl.pinctrl, state);
+dsi_panel.c:		pr_err("[%s] failed to set pin state, rc=%d\n", panel->name,
+dsi_panel.c:	rc = dsi_pwr_enable_regulator(&panel->power_info, true);
+dsi_panel.c:		pr_err("[%s] failed to enable vregs, rc=%d\n", panel->name, rc);
+dsi_panel.c:	if (gpio_is_valid(panel->poc)) {
+dsi_panel.c:		rc = gpio_direction_output(panel->poc, 1);
+dsi_panel.c:	if (gpio_is_valid(panel->vddd_gpio)) {
+dsi_panel.c:		rc = gpio_direction_output(panel->vddd_gpio, 1);
+dsi_panel.c:		pr_err("[%s] failed to set pinctrl, rc=%d\n", panel->name, rc);
+dsi_panel.c:	if (!panel->lp11_init) {
+dsi_panel.c:			pr_err("[%s] failed to reset panel, rc=%d\n", panel->name, rc);
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.disp_en_gpio))
+dsi_panel.c:		gpio_set_value(panel->reset_config.disp_en_gpio, 0);
+dsi_panel.c:	if (gpio_is_valid(panel->bl_config.en_gpio))
+dsi_panel.c:		gpio_set_value(panel->bl_config.en_gpio, 0);
+dsi_panel.c:	if (gpio_is_valid(panel->vddd_gpio))
+dsi_panel.c:		gpio_set_value(panel->vddd_gpio, 0);
+dsi_panel.c:	if (gpio_is_valid(panel->poc))
+dsi_panel.c:		gpio_set_value(panel->poc, 0);
+dsi_panel.c:	(void)dsi_pwr_enable_regulator(&panel->power_info, false);
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.disp_en_gpio))
+dsi_panel.c:		gpio_set_value(panel->reset_config.disp_en_gpio, 0);
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.reset_gpio))
+dsi_panel.c:		gpio_set_value(panel->reset_config.reset_gpio, 0);
+dsi_panel.c:	if (gpio_is_valid(panel->reset_config.lcd_mode_sel_gpio))
+dsi_panel.c:		gpio_set_value(panel->reset_config.lcd_mode_sel_gpio, 0);
+dsi_panel.c:	if (strcmp(panel->name,
+dsi_panel.c:		if (gpio_is_valid(panel->vddd_gpio)) {
+dsi_panel.c:			gpio_set_value(panel->vddd_gpio, 0);
+dsi_panel.c:	if (gpio_is_valid(panel->poc)) {
+dsi_panel.c:		gpio_set_value(panel->poc, 0);
+dsi_panel.c:		pr_err("[%s] failed set pinctrl state, rc=%d\n", panel->name,
+dsi_panel.c:	rc = dsi_pwr_enable_regulator(&panel->power_info, false);
+dsi_panel.c:		pr_err("[%s] failed to enable vregs, rc=%d\n", panel->name, rc);
+dsi_panel.c:	const struct mipi_dsi_host_ops *ops = panel->host->ops;
+dsi_panel.c:	if (!panel || !panel->cur_mode)
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:			 panel->name, type);
+dsi_panel.c:		len = ops->transfer(panel->host, &cmds->msg);
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:	devm_pinctrl_put(panel->pinctrl.pinctrl);
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:	panel->pinctrl.pinctrl = devm_pinctrl_get(panel->parent);
+dsi_panel.c:	if (IS_ERR_OR_NULL(panel->pinctrl.pinctrl)) {
+dsi_panel.c:		rc = PTR_ERR(panel->pinctrl.pinctrl);
+dsi_panel.c:	panel->pinctrl.active = pinctrl_lookup_state(panel->pinctrl.pinctrl,
+dsi_panel.c:	if (IS_ERR_OR_NULL(panel->pinctrl.active)) {
+dsi_panel.c:		rc = PTR_ERR(panel->pinctrl.active);
+dsi_panel.c:	panel->pinctrl.suspend =
+dsi_panel.c:		pinctrl_lookup_state(panel->pinctrl.pinctrl, "panel_suspend");
+dsi_panel.c:	if (IS_ERR_OR_NULL(panel->pinctrl.suspend)) {
+dsi_panel.c:		rc = PTR_ERR(panel->pinctrl.suspend);
+dsi_panel.c:		pr_debug("[%s] backlight device list empty\n", panel->name);
+dsi_panel.c:	dsi = &panel->mipi_device;
+dsi_panel.c:	if (!panel || (bl_lvl > 0xffff) || !panel->cur_mode) {
+dsi_panel.c:	dsi = &panel->mipi_device;
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	if (panel->bl_config.bl_inverted_dbv)
+dsi_panel.c:	if (panel->is_hbm_enabled) {
+dsi_panel.c:	if (panel->bl_config.bl_high2bit) {
+dsi_panel.c:		     cur_h != panel->cur_mode->timing.h_active) &&
+dsi_panel.c:			cur_h = panel->cur_mode->timing.h_active;
+dsi_panel.c:		cur_h = panel->cur_mode->timing.h_active;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:				"When HBM OFF -->hbm_backight = %d panel->bl_config.bl_level =%d\n",
+dsi_panel.c:				panel->hbm_backlight, panel->bl_config.bl_level);
+dsi_panel.c:			dsi_panel_update_backlight(panel, panel->hbm_backlight);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	bl = &panel->bl_config;
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:	struct dsi_backlight_config *bl = &panel->bl_config;
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:		panel->hbm_backlight = bl_lvl;
+dsi_panel.c:	struct dsi_backlight_config *bl = &panel->bl_config;
+dsi_panel.c:	struct dsi_backlight_config *bl = &panel->bl_config;
+dsi_panel.c:	bl->pwm_bl = devm_of_pwm_get(panel->parent, panel->panel_of_node, NULL);
+dsi_panel.c:		pr_err("[%s] failed to request pwm, rc=%d\n", panel->name,
+dsi_panel.c:	struct dsi_backlight_config *bl = &panel->bl_config;
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:	struct dsi_backlight_config *bl = &panel->bl_config;
+dsi_panel.c:	devm_pwm_put(panel->parent, bl->pwm_bl);
+dsi_panel.c:	struct dsi_backlight_config *bl = &panel->bl_config;
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:			"qcom,mdss-dsi-panel-clockrate", &tmp64);
+dsi_panel.c:			"qcom,mdss-dsi-panel-clockrate", (u32 *)&tmp64);
+dsi_panel.c:				"qcom,mdss-dsi-panel-framerate",
+dsi_panel.c:		pr_err("failed to read qcom,mdss-dsi-panel-framerate, rc=%d\n",
+dsi_panel.c:	rc = utils->read_u32(utils->data, "qcom,mdss-dsi-panel-width",
+dsi_panel.c:		pr_err("failed to read qcom,mdss-dsi-panel-width, rc=%d\n", rc);
+dsi_panel.c:	rc = utils->read_u32(utils->data, "qcom,mdss-dsi-panel-height",
+dsi_panel.c:		pr_err("failed to read qcom,mdss-dsi-panel-height, rc=%d\n",
+dsi_panel.c:					"qcom,panel-cphy-mode");
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	rc = dsi_panel_parse_pixel_format(&panel->host_config, utils,
+dsi_panel.c:					  panel->name);
+dsi_panel.c:		panel->name, rc);
+dsi_panel.c:	rc = dsi_panel_parse_lane_states(&panel->host_config, utils,
+dsi_panel.c:					 panel->name);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	rc = dsi_panel_parse_color_swap(&panel->host_config, utils,
+dsi_panel.c:					panel->name);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	rc = dsi_panel_parse_triggers(&panel->host_config, utils,
+dsi_panel.c:				      panel->name);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	rc = dsi_panel_parse_misc_host_config(&panel->host_config, utils,
+dsi_panel.c:					      panel->name);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	dsi_panel_parse_ext_bridge_config(&panel->host_config, utils,
+dsi_panel.c:					      panel->name);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	dsi_panel_parse_split_link_config(&panel->host_config, utils,
+dsi_panel.c:						panel->name);
+dsi_panel.c:			panel->name, rc);
+dsi_panel.c:	panel->qsync_min_fps = val;
+dsi_panel.c:	struct dsi_dyn_clk_caps *dyn_clk_caps = &panel->dyn_clk_caps;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	const char *name = panel->name;
+dsi_panel.c:	struct dsi_dfps_capabilities *dfps_caps = &panel->dfps_caps;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	const char *name = panel->name;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:			"qcom,mdss-dsi-panel-type", NULL);
+dsi_panel.c:		pr_debug("[%s] Fallback to default panel mode\n", panel->name);
+dsi_panel.c:		pr_err("[%s] Unrecognized panel type-%s\n", panel->name, mode);
+dsi_panel.c:			"qcom,mdss-dsi-panel-mode-switch");
+dsi_panel.c:		rc = dsi_panel_parse_video_host_config(&panel->video_config,
+dsi_panel.c:						       panel->name);
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:		rc = dsi_panel_parse_cmd_host_config(&panel->cmd_config,
+dsi_panel.c:						     panel->name);
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:	panel->panel_mode = panel_mode;
+dsi_panel.c:	panel->panel_mode_switch_enabled = panel_mode_switch_enabled;
+dsi_panel.c:	struct dsi_panel_phy_props *props = &panel->phy_props;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	const char *name = panel->name;
+dsi_panel.c:			"qcom,mdss-dsi-panel-orientation", NULL);
+dsi_panel.c:	"qcom,mdss-dsi-post-panel-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-status-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-brightness-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-brightness-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-1",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-2",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-3",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-4",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-5",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-serial-num-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-1",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-2",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-3",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-4",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-5",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-hbm-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-new-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-off-aod-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-real-aod-off-hbm-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-samsung-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-dci-p3-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-dci-p3-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-night-mode-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-night-mode-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-read-register-open-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id1-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id2-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id3-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id4-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id5-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id6-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id7-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-read-register-close-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-serial-num-pre-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-serial-num-post-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-code-info-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-stage-info-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-production-info-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-read-esd-registed-longread-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-flash-pre-read-1-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-flash-pre-read-2-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-flash-read-fb-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-level2-key-enable-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c8-smrps-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c8-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c9-smrps-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c9-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-b3-smrps-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-b3-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-level2-key-disable-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-p3-mode-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-p3-mode-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-wide-color-mode-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-wide-color-mode-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-srgb-color-mode-on-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-srgb-color-mode-off-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-command",
+dsi_panel.c:	"qcom,mdss-dsi-panel-status-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-brightness-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-brightness-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-1-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-2-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-3-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-4-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-on-command-5-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-serial-num-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-1-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-2-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-3-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-4-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-on-command-5-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-hbm-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-new-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-hbm-off-aod-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-real-aod-off-hbm-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-aod-off-samsung-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-dci-p3-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-dci-p3-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-night-mode-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-night-mode-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-read-register-open-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id1-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id2-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id3-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id4-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id5-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id6-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-id7-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-read-register-close-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-serial-num-pre-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-serial-num-post-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-code-info-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-stage-info-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-production-info-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-read-esd-registed-longread-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-flash-pre-read-1-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-flash-pre-read-2-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-flash-read-fb-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-level2-key-enable-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c8-smrps-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c8-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c9-smrps-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-c9-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-b3-smrps-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-gamma-otp-read-b3-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-level2-key-disable-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-p3-mode-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-p3-mode-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-wide-color-mode-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-wide-color-mode-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-srgb-color-mode-on-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-display-srgb-color-mode-off-command-state",
+dsi_panel.c:	"qcom,mdss-dsi-panel-command-state",
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:		pr_err("[%s] dsi-reset-sequence not found\n", panel->name);
+dsi_panel.c:		       panel->name);
+dsi_panel.c:		pr_err("[%s] cannot read dso-reset-seqience\n", panel->name);
+dsi_panel.c:	panel->reset_config.sequence = seq;
+dsi_panel.c:	panel->reset_config.count = count;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	panel->ulps_feature_enabled =
+dsi_panel.c:		(panel->ulps_feature_enabled ? "enabled" : "disabled"));
+dsi_panel.c:	panel->ulps_suspend_enabled =
+dsi_panel.c:		(panel->ulps_suspend_enabled ? "enabled" : "disabled"));
+dsi_panel.c:	panel->te_using_watchdog_timer = utils->read_bool(utils->data,
+dsi_panel.c:	panel->sync_broadcast_en = utils->read_bool(utils->data,
+dsi_panel.c:	panel->lp11_init = utils->read_bool(utils->data,
+dsi_panel.c:	rc = utils->read_u32_array(utils->data, "qcom,mdss-dsi-panel-jitter",
+dsi_panel.c:	rc = utils->read_u32(utils->data, "qcom,mdss-dsi-panel-prefill-lines",
+dsi_panel.c:	if (panel->host_config.ext_bridge_num)
+dsi_panel.c:	if (!strcmp(panel->type, "primary"))
+dsi_panel.c:		supply_name = "qcom,panel-supply-entries";
+dsi_panel.c:		supply_name = "qcom,panel-sec-supply-entries";
+dsi_panel.c:	rc = dsi_pwr_of_get_vreg_data(&panel->utils,
+dsi_panel.c:			&panel->power_info, supply_name);
+dsi_panel.c:		pr_err("[%s] failed to parse vregs\n", panel->name);
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	if ((!strcmp(panel->type, "primary")) && (oem_project == 19861)) {
+dsi_panel.c:		mode_set_gpio_name = "qcom,panel-mode-gpio-tmo";
+dsi_panel.c:	} else if (!strcmp(panel->type, "primary")) {
+dsi_panel.c:		mode_set_gpio_name = "qcom,panel-mode-gpio";
+dsi_panel.c:		mode_set_gpio_name = "qcom,panel-sec-mode-gpio";
+dsi_panel.c:	panel->reset_config.reset_gpio = utils->get_named_gpio(utils->data,
+dsi_panel.c:	if (!gpio_is_valid(panel->reset_config.reset_gpio) &&
+dsi_panel.c:		!panel->host_config.ext_bridge_num) {
+dsi_panel.c:		rc = panel->reset_config.reset_gpio;
+dsi_panel.c:		pr_err("[%s] failed get reset gpio, rc=%d\n", panel->name, rc);
+dsi_panel.c:	panel->reset_config.disp_en_gpio = utils->get_named_gpio(utils->data,
+dsi_panel.c:	if (!gpio_is_valid(panel->reset_config.disp_en_gpio)) {
+dsi_panel.c:			 panel->name, rc);
+dsi_panel.c:		panel->reset_config.disp_en_gpio =
+dsi_panel.c:		if (!gpio_is_valid(panel->reset_config.disp_en_gpio)) {
+dsi_panel.c:				 panel->name, rc);
+dsi_panel.c:	panel->poc =
+dsi_panel.c:	if (!gpio_is_valid(panel->poc)) {
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	panel->vddd_gpio =
+dsi_panel.c:	if (!gpio_is_valid(panel->vddd_gpio)) {
+dsi_panel.c:		pr_err("[%s] vddd-gpio is not set, rc=%d\n", panel->name, rc);
+dsi_panel.c:	panel->tp1v8_gpio =
+dsi_panel.c:	if (!gpio_is_valid(panel->tp1v8_gpio)) {
+dsi_panel.c:		pr_err("[%s] tp1v8_gpio is not set, rc=%d\n", panel->name, rc);
+dsi_panel.c:	panel->err_flag_gpio =
+dsi_panel.c:	if (!gpio_is_valid(panel->err_flag_gpio)) {
+dsi_panel.c:		pr_err("[%s] err_flag_gpio is not set, rc=%d\n", panel->name,
+dsi_panel.c:	panel->reset_config.lcd_mode_sel_gpio = utils->get_named_gpio(
+dsi_panel.c:	if (!gpio_is_valid(panel->reset_config.lcd_mode_sel_gpio))
+dsi_panel.c:	pr_debug("mode gpio=%d\n", panel->reset_config.lcd_mode_sel_gpio);
+dsi_panel.c:			panel->reset_config.mode_sel_state =
+dsi_panel.c:			panel->reset_config.mode_sel_state =
+dsi_panel.c:			panel->reset_config.mode_sel_state =
+dsi_panel.c:			panel->reset_config.mode_sel_state =
+dsi_panel.c:		panel->reset_config.mode_sel_state = MODE_SEL_DUAL_PORT;
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	struct dsi_backlight_config *config = &panel->bl_config;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	if (!strcmp(panel->type, "primary"))
+dsi_panel.c:		panel->bl_config.type = DSI_BACKLIGHT_UNKNOWN;
+dsi_panel.c:		panel->bl_config.type = DSI_BACKLIGHT_PWM;
+dsi_panel.c:		panel->bl_config.type = DSI_BACKLIGHT_WLED;
+dsi_panel.c:		panel->bl_config.type = DSI_BACKLIGHT_DCS;
+dsi_panel.c:		panel->bl_config.type = DSI_BACKLIGHT_EXTERNAL;
+dsi_panel.c:			 panel->name, bl_type);
+dsi_panel.c:		panel->bl_config.type = DSI_BACKLIGHT_UNKNOWN;
+dsi_panel.c:		panel->bl_config.bl_update = BL_UPDATE_NONE;
+dsi_panel.c:		panel->bl_config.bl_update = BL_UPDATE_DELAY_UNTIL_FIRST_FRAME;
+dsi_panel.c:						panel->name, data);
+dsi_panel.c:		panel->bl_config.bl_update = BL_UPDATE_NONE;
+dsi_panel.c:	panel->bl_config.bl_scale = MAX_BL_SCALE_LEVEL;
+dsi_panel.c:	panel->bl_config.bl_scale_ad = MAX_AD_BL_SCALE_LEVEL;
+dsi_panel.c:			 panel->name);
+dsi_panel.c:		panel->bl_config.bl_min_level = 0;
+dsi_panel.c:		panel->bl_config.bl_min_level = val;
+dsi_panel.c:			 panel->name);
+dsi_panel.c:		panel->bl_config.bl_max_level = MAX_BL_LEVEL;
+dsi_panel.c:		panel->bl_config.bl_max_level = val;
+dsi_panel.c:			panel->name);
+dsi_panel.c:		panel->bl_config.bl_def_val = 200;
+dsi_panel.c:		panel->bl_config.bl_def_val = val;
+dsi_panel.c:	       panel->bl_config.bl_def_val);
+dsi_panel.c:			 panel->name);
+dsi_panel.c:		panel->bl_config.brightness_max_level = 255;
+dsi_panel.c:		panel->bl_config.brightness_max_level = val;
+dsi_panel.c:		panel->bl_config.brightness_default_level =
+dsi_panel.c:			panel->bl_config.brightness_max_level;
+dsi_panel.c:		panel->bl_config.brightness_default_level = val;
+dsi_panel.c:	panel->bl_config.bl_inverted_dbv = utils->read_bool(utils->data,
+dsi_panel.c:	if (panel->bl_config.type == DSI_BACKLIGHT_PWM) {
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:	panel->bl_config.en_gpio = utils->get_named_gpio(utils->data,
+dsi_panel.c:	if (!gpio_is_valid(panel->bl_config.en_gpio)) {
+dsi_panel.c:		if (panel->bl_config.en_gpio == -EPROBE_DEFER) {
+dsi_panel.c:						panel->name, rc);
+dsi_panel.c:						panel->name, rc);
+dsi_panel.c:			"qcom,mdss-dsi-panel-phy-timings", &len);
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	hdr_prop = &panel->hdr_props;
+dsi_panel.c:		"qcom,mdss-dsi-panel-hdr-enabled");
+dsi_panel.c:				"qcom,mdss-dsi-panel-hdr-color-primaries",
+dsi_panel.c:			"qcom,mdss-dsi-panel-peak-brightness",
+dsi_panel.c:			"qcom,mdss-dsi-panel-blackness-level",
+dsi_panel.c:			"qcom,panel-roi-alignment", &len);
+dsi_panel.c:				"qcom,panel-roi-alignment", value, len);
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	panel->dms_mode = DSI_DMS_MODE_DISABLED;
+dsi_panel.c:		panel->dms_mode = DSI_DMS_MODE_RES_SWITCH_IMMEDIATE;
+dsi_panel.c:							panel->name, data);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-manufacture", NULL);
+dsi_panel.c:		of_get_property(of_node, "qcom,mdss-dsi-panel-version", NULL);
+dsi_panel.c:	panel->lp11_init =
+dsi_panel.c:	if (panel->lp11_init)
+dsi_panel.c:		pr_info("lp11_init:%d\n", panel->lp11_init);
+dsi_panel.c:	panel->bl_config.bl_high2bit =
+dsi_panel.c:	if (panel->bl_config.bl_high2bit) {
+dsi_panel.c:		pr_info("bl_high2bit:%d\n", panel->bl_config.bl_high2bit);
+dsi_panel.c:	panel->naive_display_loading_effect_mode =
+dsi_panel.c:	if (panel->naive_display_loading_effect_mode)
+dsi_panel.c:			panel->naive_display_loading_effect_mode);
+dsi_panel.c:	panel->acl_cmd_index = (!rc ? tmp : 0);
+dsi_panel.c:	panel->acl_mode_index = (!rc ? tmp : 0);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-seria-num-year-index", &tmp);
+dsi_panel.c:	panel->panel_year_index = (!rc ? tmp : 0);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-seria-num-mon-index", &tmp);
+dsi_panel.c:	panel->panel_mon_index = (!rc ? tmp : 0);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-seria-num-day-index", &tmp);
+dsi_panel.c:	panel->panel_day_index = (!rc ? tmp : 0);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-seria-num-hour-index", &tmp);
+dsi_panel.c:	panel->panel_hour_index = (!rc ? tmp : 0);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-seria-num-min-index", &tmp);
+dsi_panel.c:	panel->panel_min_index = (!rc ? tmp : 0);
+dsi_panel.c:		of_node, "qcom,mdss-dsi-panel-seria-num-sec-index", &tmp);
+dsi_panel.c:	panel->panel_sec_index = (!rc ? tmp : 0);
+dsi_panel.c:	rc = of_property_read_u32(of_node, "qcom,mdss-dsi-panel-status-value-2",
+dsi_panel.c:	panel->status_value = (!rc ? tmp : 0);
+dsi_panel.c:	panel->panel_mismatch_check = of_property_read_bool(
+dsi_panel.c:		of_node, "qcom,mdss-panel-mismatch-check");
+dsi_panel.c:	struct drm_panel_esd_config *config = &panel->esd_config;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	esd_config = &panel->esd_config;
+dsi_panel.c:		"qcom,mdss-dsi-panel-status-read-length",
+dsi_panel.c:			&panel->esd_config.status_cmds_rlen,
+dsi_panel.c:		"qcom,mdss-dsi-panel-status-valid-params",
+dsi_panel.c:			&panel->esd_config.status_valid_params,
+dsi_panel.c:			"qcom,mdss-dsi-panel-status-value", &tmp);
+dsi_panel.c:		pr_err("error parse panel-status-value\n");
+dsi_panel.c:		"qcom,mdss-dsi-panel-status-value",
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	esd_config = &panel->esd_config;
+dsi_panel.c:			"qcom,mdss-dsi-panel-status-check-mode", &string);
+dsi_panel.c:			if (panel->panel_mode == DSI_OP_CMD_MODE) {
+dsi_panel.c:			pr_err("No valid panel-status-check-mode string\n");
+dsi_panel.c:	if (panel->esd_config.status_mode == ESD_MODE_REG_READ) {
+dsi_panel.c:	} else if (panel->esd_config.status_mode == ESD_MODE_SW_BTA) {
+dsi_panel.c:	} else if (panel->esd_config.status_mode ==  ESD_MODE_PANEL_TE) {
+dsi_panel.c:	panel->esd_config.esd_enabled = false;
+dsi_panel.c:	struct dsi_parser_utils *utils = &panel->utils;
+dsi_panel.c:	utils->data = panel->panel_of_node;
+dsi_panel.c:	utils->node = panel->panel_of_node;
+dsi_panel.c:	panel->panel_of_node = of_node;
+dsi_panel.c:	panel->parent = parent;
+dsi_panel.c:	panel->type = type;
+dsi_panel.c:	utils = &panel->utils;
+dsi_panel.c:	panel->name = utils->get_property(utils->data,
+dsi_panel.c:				"qcom,mdss-dsi-panel-name", NULL);
+dsi_panel.c:	if (strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0) {
+dsi_panel.c:	} else if (strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") == 0) {
+dsi_panel.c:	} else if (strcmp(panel->name, "samsung s6e3fc2x01 cmd mode dsi panel") == 0) {
+dsi_panel.c:	} else if (!panel->name)
+dsi_panel.c:		panel->name = DSI_PANEL_DEFAULT_LABEL;
+dsi_panel.c:	panel->panel_type = DSI_DISPLAY_PANEL_TYPE_LCD;
+dsi_panel.c:				"qcom,mdss-dsi-panel-physical-type", NULL);
+dsi_panel.c:		panel->panel_type = DSI_DISPLAY_PANEL_TYPE_OLED;
+dsi_panel.c:	if ((panel->dfps_caps.dfps_support) &&
+dsi_panel.c:	    !(panel->dfps_caps.type == DSI_DFPS_IMMEDIATE_VFP))
+dsi_panel.c:		panel->qsync_min_fps = 0;
+dsi_panel.c:	panel->power_mode = SDE_MODE_DPMS_OFF;
+dsi_panel.c:	drm_panel_init(&panel->drm_panel);
+dsi_panel.c:	mutex_init(&panel->panel_lock);
+dsi_panel.c:	dsi_panel_esd_config_deinit(&panel->esd_config);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	dev = &panel->mipi_device;
+dsi_panel.c:	panel->host = host;
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:		pr_err("[%s] failed to init pinctrl, rc=%d\n", panel->name, rc);
+dsi_panel.c:		pr_err("[%s] failed to request gpios, rc=%d\n", panel->name,
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:		pr_err("[%s] failed to release gpios, rc=%d\n", panel->name,
+dsi_panel.c:		pr_err("[%s] failed to deinit gpios, rc=%d\n", panel->name,
+dsi_panel.c:		pr_err("[%s] failed to put regs, rc=%d\n", panel->name, rc);
+dsi_panel.c:	panel->host = NULL;
+dsi_panel.c:	memset(&panel->mipi_device, 0x0, sizeof(panel->mipi_device));
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	utils = &panel->utils;
+dsi_panel.c:	panel->num_timing_nodes = 0;
+dsi_panel.c:	if (!timings_np && !panel->host_config.ext_bridge_num) {
+dsi_panel.c:	if ((!count && !panel->host_config.ext_bridge_num) ||
+dsi_panel.c:	if (panel->panel_mode != DSI_OP_CMD_MODE &&
+dsi_panel.c:		!panel->host_config.ext_bridge_num &&
+dsi_panel.c:		!panel->panel_mode_switch_enabled)
+dsi_panel.c:	panel->num_timing_nodes = count;
+dsi_panel.c:		else if (panel->panel_mode == DSI_OP_VIDEO_MODE)
+dsi_panel.c:		else if (panel->panel_mode == DSI_OP_CMD_MODE)
+dsi_panel.c:	num_dfps_rates = !panel->dfps_caps.dfps_support ? 1 :
+dsi_panel.c:					panel->dfps_caps.dfps_list_len;
+dsi_panel.c:	num_bit_clks = !panel->dyn_clk_caps.dyn_clk_support ? 1 :
+dsi_panel.c:					panel->dyn_clk_caps.bit_clk_list_len;
+dsi_panel.c:	if ((panel->panel_mode == DSI_OP_VIDEO_MODE) &&
+dsi_panel.c:			(panel->panel_mode_switch_enabled))
+dsi_panel.c:	panel->num_display_modes = num_video_modes + num_cmd_modes;
+dsi_panel.c:	memcpy(phy_props, &panel->phy_props, sizeof(*phy_props));
+dsi_panel.c:	memcpy(dfps_caps, &panel->dfps_caps, sizeof(*dfps_caps));
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	utils = &panel->utils;
+dsi_panel.c:		rc = dsi_panel_parse_phy_timing(mode, utils, panel->panel_mode);
+dsi_panel.c:		if (panel->panel_mode_switch_enabled) {
+dsi_panel.c:				mode->panel_mode = panel->panel_mode;
+dsi_panel.c:			mode->panel_mode = panel->panel_mode;
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	struct dsi_dyn_clk_caps *dyn_clk_caps = &panel->dyn_clk_caps;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	config->panel_mode = panel->panel_mode;
+dsi_panel.c:	memcpy(&config->common_config, &panel->host_config,
+dsi_panel.c:	if (panel->panel_mode == DSI_OP_VIDEO_MODE) {
+dsi_panel.c:		memcpy(&config->u.video_engine, &panel->video_config,
+dsi_panel.c:		memcpy(&config->u.cmd_engine, &panel->cmd_config,
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (panel->err_flag_status == true) {
+dsi_panel.c:		panel->err_flag_status = false;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	//	if (panel->lp11_init)
+dsi_panel.c:	if (gpio_is_valid(panel->tp1v8_gpio)) {
+dsi_panel.c:		rc = gpio_direction_output(panel->tp1v8_gpio, 1);
+dsi_panel.c:		pr_err("[%s] panel power on failed, rc=%d\n", panel->name, rc);
+dsi_panel.c:		if (gpio_is_valid(panel->tp1v8_gpio))
+dsi_panel.c:			gpio_set_value(panel->tp1v8_gpio, 0);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	priv_info = panel->cur_mode->priv_info;
+dsi_panel.c:	dsi_dsc_create_pps_buf_cmd(&priv_info->dsc, panel->dsc_pps_cmd, 0);
+dsi_panel.c:	rc = dsi_panel_create_cmd_packets(panel->dsc_pps_cmd,
+dsi_panel.c:			panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (!panel->panel_initialized)
+dsi_panel.c:	    panel->power_mode != SDE_MODE_DPMS_LP2)
+dsi_panel.c:		dsi_pwr_panel_regulator_mode_set(&panel->power_info,
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	panel->need_power_on_backlight = true;
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (!panel->panel_initialized)
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (!panel->panel_initialized)
+dsi_panel.c:	    (panel->power_mode == SDE_MODE_DPMS_LP1 ||
+dsi_panel.c:		panel->power_mode == SDE_MODE_DPMS_LP2))
+dsi_panel.c:		dsi_pwr_panel_regulator_mode_set(&panel->power_info,
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (panel->lp11_init) {
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:			       panel->name, rc);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	priv_info = panel->cur_mode->priv_info;
+dsi_panel.c:				panel->name, rc);
+dsi_panel.c:	pr_debug("[%s] send roi x %d y %d w %d h %d\n", panel->name,
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:				panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:			panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:			panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:			panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:			panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if ((strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") != 0) &&
+dsi_panel.c:	    (strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") != 0))
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	pr_err("panel->cur_mode->timing->h_active = %d\n",
+dsi_panel.c:	       panel->cur_mode->timing.h_active);
+dsi_panel.c:	if ((strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0) &&
+dsi_panel.c:				       panel->name, rc);
+dsi_panel.c:				       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (panel->aod_mode == 2) {
+dsi_panel.c:		panel->aod_status = 1;
+dsi_panel.c:	if ((EVT2_113MHZ_OSC == panel->panel_stage_info) ||
+dsi_panel.c:	    (PVT_113MHZ_OSC == panel->panel_stage_info) ||
+dsi_panel.c:	    (PVT_113MHZ_OSC_XTALK == panel->panel_stage_info)) {
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	panel->need_power_on_backlight = true;
+dsi_panel.c:	if ((strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0) &&
+dsi_panel.c:				       panel->name, rc);
+dsi_panel.c:	panel->panel_initialized = true;
+dsi_panel.c:	pr_err("dsi_panel_enable aod_mode =%d\n", panel->aod_mode);
+dsi_panel.c:	if (panel->aod_mode == 0) {
+dsi_panel.c:		panel->aod_status = 0;
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (!atomic_read(&panel->esd_recovery_pending)) {
+dsi_panel.c:		if (panel->aod_mode == 2) {
+dsi_panel.c:			panel->aod_status = 1;
+dsi_panel.c:		if (panel->aod_mode == 0) {
+dsi_panel.c:			panel->aod_status = 0;
+dsi_panel.c:		      (panel->power_mode == SDE_MODE_DPMS_LP1 ||
+dsi_panel.c:		       panel->power_mode == SDE_MODE_DPMS_LP2))
+dsi_panel.c:			dsi_pwr_panel_regulator_mode_set(&panel->power_info,
+dsi_panel.c:					panel->name, rc);
+dsi_panel.c:	panel->panel_initialized = false;
+dsi_panel.c:	panel->power_mode = SDE_MODE_DPMS_OFF;
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (panel->err_flag_status == true) {
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:		       panel->name, rc);
+dsi_panel.c:		if (gpio_is_valid(panel->tp1v8_gpio)) {
+dsi_panel.c:			gpio_set_value(panel->tp1v8_gpio, 0);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:			pr_err("hbm_backight = %d, panel->bl_config.bl_level = %d\n",
+dsi_panel.c:			       panel->hbm_backlight, panel->bl_config.bl_level);
+dsi_panel.c:							panel->hbm_backlight);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel->cur_mode) {
+dsi_panel.c:	dsi = &panel->mipi_device;
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	if (panel->is_hbm_enabled) {
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	if (strcmp(panel->name,
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	tx = (u8 *)cmds[panel->acl_cmd_index].msg.tx_buf;
+dsi_panel.c:		tx[panel->acl_mode_index] = level;
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	if (panel->aod_disable) {
+dsi_panel.c:	pr_err("panel->aod_status ==%d\n", panel->aod_status);
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:		mutex_lock(&panel->panel_lock);
+dsi_panel.c:		panel->aod_status == 1;
+dsi_panel.c:		mutex_unlock(&panel->panel_lock);
+dsi_panel.c:		if (panel->aod_status == 0) {
+dsi_panel.c:			panel->aod_status = 1;
+dsi_panel.c:		mutex_lock(&panel->panel_lock);
+dsi_panel.c:		panel->aod_status = 1;
+dsi_panel.c:		mutex_unlock(&panel->panel_lock);
+dsi_panel.c:		mutex_lock(&panel->panel_lock);
+dsi_panel.c:		panel->aod_status = 1;
+dsi_panel.c:		mutex_unlock(&panel->panel_lock);
+dsi_panel.c:		if (panel->aod_status) {
+dsi_panel.c:			panel->aod_status = 0;
+dsi_panel.c:					mutex_lock(&panel->panel_lock);
+dsi_panel.c:					mutex_unlock(&panel->panel_lock);
+dsi_panel.c:					mutex_lock(&panel->panel_lock);
+dsi_panel.c:					mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	panel->aod_curr_mode = level;
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	mutex_lock(&panel->panel_lock);
+dsi_panel.c:	mutex_unlock(&panel->panel_lock);
+dsi_panel.c:	if (!panel || !panel->cur_mode) {
+dsi_panel.c:	mode = panel->cur_mode;
+dsi_panel.c:	const struct mipi_dsi_host_ops *ops = panel->host->ops;
+dsi_panel.c:			 panel->name, type);
+dsi_panel.c:		len = ops->transfer(panel->host, &cmds->msg);
+dsi_phy.c:			"qcom,panel-allow-phy-poweroff");
+dsi_panel.h:	return panel->ulps_feature_enabled;
+dsi_panel.h:	return panel->panel_initialized;
+dsi_panel.h:	mutex_lock(&panel->panel_lock);
+dsi_panel.h:	mutex_unlock(&panel->panel_lock);
+dsi_panel.h:	return (panel->panel_type == DSI_DISPLAY_PANEL_TYPE_OLED);
+dsi_drm.c:	atomic_set(&c_bridge->display->panel->esd_recovery_pending, 0);
+dsi_drm.c:	if (display->panel && !display->panel->num_timing_nodes) {
+dsi_drm.c:	sde_kms_info_add_keystr(info, "panel name", panel->name);
+dsi_drm.c:	switch (panel->panel_mode) {
+dsi_drm.c:				panel->qsync_min_fps ? "true" : "false");
+dsi_drm.c:				panel->qsync_min_fps ? "true" : "false");
+dsi_drm.c:		pr_debug("invalid panel type:%d\n", panel->panel_mode);
+dsi_drm.c:			panel->dfps_caps.dfps_support ? "true" : "false");
+dsi_drm.c:	if (panel->dfps_caps.dfps_support) {
+dsi_drm.c:			panel->dfps_caps.min_refresh_rate);
+dsi_drm.c:			panel->dfps_caps.max_refresh_rate);
+dsi_drm.c:			panel->dyn_clk_caps.dyn_clk_support ? "true" : "false");
+dsi_drm.c:	switch (panel->phy_props.rotation) {
+dsi_drm.c:						panel->phy_props.rotation);
+dsi_drm.c:	switch (panel->bl_config.type) {
+dsi_drm.c:						panel->bl_config.type);
+dsi_drm.c:	rc = dsi_drm_update_edid_name(&edid, display->panel->name);
+dsi_display.h: *                      count got from display->panel->num_display_modes;
+dsi_display.c:	if (display->panel->host_config.force_hs_clk_lane) {
+dsi_display.c:	mutex_lock(&panel->panel_lock);
+dsi_display.c:		panel->hbm_backlight = bl_lvl;
+dsi_display.c:		panel->bl_config.bl_level = bl_lvl;
+dsi_display.c:		pr_err("HBM_backight =%d\n", panel->hbm_backlight);
+dsi_display.c:	if (strcmp(dsi_display->panel->name,
+dsi_display.c:		if (bl_lvl != 0 && panel->bl_config.bl_level == 0) {
+dsi_display.c:			if (panel->naive_display_p3_mode) {
+dsi_display.c:			if (panel->naive_display_wide_color_mode) {
+dsi_display.c:			if (panel->naive_display_srgb_color_mode) {
+dsi_display.c:			if (panel->naive_display_customer_srgb_mode) {
+dsi_display.c:			if (panel->naive_display_customer_p3_mode) {
+dsi_display.c:	if (strcmp(dsi_display->panel->name,
+dsi_display.c:		if (bl_lvl != 0 && panel->bl_config.bl_level == 0) {
+dsi_display.c:			if (panel->naive_display_p3_mode) {
+dsi_display.c:			if (panel->naive_display_wide_color_mode) {
+dsi_display.c:			if (panel->naive_display_srgb_color_mode) {
+dsi_display.c:			if (panel->naive_display_loading_effect_mode) {
+dsi_display.c:			if (panel->naive_display_customer_srgb_mode) {
+dsi_display.c:			if (panel->naive_display_customer_p3_mode) {
+dsi_display.c:	if (strcmp(dsi_display->panel->name,
+dsi_display.c:		if (bl_lvl != 0 && panel->bl_config.bl_level == 0) {
+dsi_display.c:			if (panel->naive_display_p3_mode) {
+dsi_display.c:			if (panel->naive_display_wide_color_mode) {
+dsi_display.c:			if (panel->naive_display_srgb_color_mode) {
+dsi_display.c:			if (panel->naive_display_loading_effect_mode) {
+dsi_display.c:			if (panel->naive_display_customer_srgb_mode) {
+dsi_display.c:			if (panel->naive_display_customer_p3_mode) {
+dsi_display.c:	panel->bl_config.bl_level = bl_lvl;
+dsi_display.c:	bl_scale = panel->bl_config.bl_scale;
+dsi_display.c:	bl_scale_ad = panel->bl_config.bl_scale_ad;
+dsi_display.c:	mutex_unlock(&panel->panel_lock);
+dsi_display.c:	if ((strcmp(dsi_display->panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0 ||
+dsi_display.c:	     strcmp(panel->name, "samsung s6e3fc2x01 cmd mode dsi panel") ==  0 ||
+dsi_display.c:	     strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") == 0) &&
+dsi_display.c:			    (strcmp(dsi_display->panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0)) {
+dsi_display.c:					schedule_delayed_work(&dsi_display->panel->gamma_read_work, 0);
+dsi_display.c:	if ((!display) || (!display->panel->is_err_flag_irq_enabled) ||
+dsi_display.c:	    (!display->panel->panel_initialized))
+dsi_display.c:	if (!display->panel->err_flag_status) {
+dsi_display.c:		display->panel->err_flag_status = true;
+dsi_display.c:	if (!gpio_is_valid(display->panel->err_flag_gpio))
+dsi_display.c:	if (enable && !display->panel->is_err_flag_irq_enabled) {
+dsi_display.c:		enable_irq(gpio_to_irq(display->panel->err_flag_gpio));
+dsi_display.c:		display->panel->is_err_flag_irq_enabled = true;
+dsi_display.c:	} else if (!enable && display->panel->is_err_flag_irq_enabled) {
+dsi_display.c:		disable_irq(gpio_to_irq(display->panel->err_flag_gpio));
+dsi_display.c:		display->panel->is_err_flag_irq_enabled = false;
+dsi_display.c:	if (!gpio_is_valid(display->panel->err_flag_gpio)) {
+dsi_display.c:	err_flag_irq = gpio_to_irq(display->panel->err_flag_gpio);
+dsi_display.c:	display->panel->is_err_flag_irq_enabled = false;
+dsi_display.c:	if (display->panel->esd_config.status_mode == ESD_MODE_PANEL_TE)
+dsi_display.c:		display->panel->esd_config.esd_enabled = false;
+dsi_display.c:	config = &(panel->esd_config);
+dsi_display.c:			"qcom,panel-te-source", &val);
+dsi_display.c:			"qcom,panel-te-source", &val);
+dsi_display.c:	config = &(panel->esd_config);
+dsi_display.c:	const struct mipi_dsi_host_ops *ops = panel->host->ops;
+dsi_display.c:	if (!panel || !panel->cur_mode)
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:			 panel->name, type);
+dsi_display.c:		len = ops->transfer(panel->host, &cmds->msg);
+dsi_display.c:	mode = display->panel->cur_mode;
+dsi_display.c:	if (strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0) {
+dsi_display.c:	} else if (strcmp(panel->name, "samsung s6e3fc2x01 cmd mode dsi panel") == 0) {
+dsi_display.c:	} else if (strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") == 0) {
+dsi_display.c:	if (!display->panel->sync_broadcast_en)
+dsi_display.c:	if (strcmp(dsi_display->panel->name,
+dsi_display.c:	if (!panel->panel_initialized) {
+dsi_display.c:	if (atomic_read(&panel->esd_recovery_pending))
+dsi_display.c:	status_mode = panel->esd_config.status_mode;
+dsi_display.c:	if (dsi_display->panel->err_flag_status == true) {
+dsi_display.c:		panel->esd_config.esd_enabled = false;
+dsi_display.c:		atomic_set(&panel->esd_recovery_pending, 1);
+dsi_display.c:	if (!display || !display->panel->host_config.force_hs_clk_lane)
+dsi_display.c:	format = dsi_display->panel->host_config.dst_format;
+dsi_display.c:		if (display->panel->aod_mode && display->panel->aod_mode != 2) {
+dsi_display.c:			display->panel->aod_status = 0;
+dsi_display.c:				       display->panel->name, rc);
+dsi_display.c:		if (display->panel->power_mode == SDE_MODE_DPMS_LP1 ||
+dsi_display.c:			display->panel->power_mode == SDE_MODE_DPMS_LP2)
+dsi_display.c:		 display->panel->power_mode, power_mode,
+dsi_display.c:		display->panel->power_mode = power_mode;
+dsi_display.c:	status_mode = display->panel->esd_config.status_mode;
+dsi_display.c:			"\tPanel = %s\n", display->panel->name);
+dsi_display.c:		atomic_read(&display->panel->esd_recovery_pending))
+dsi_display.c:	esd_config = &display->panel->esd_config;
+dsi_display.c:	esd_config = &display->panel->esd_config;
+dsi_display.c:			&display->panel->ulps_feature_enabled)) {
+dsi_display.c:			&display->panel->ulps_suspend_enabled)) {
+dsi_display.c:	struct dsi_host_common_cfg *host = &display->panel->host_config;
+dsi_display.c:	if (atomic_read(&display->panel->esd_recovery_pending)) {
+dsi_display.c:			!display->panel->ulps_suspend_enabled) {
+dsi_display.c:			!display->panel->ulps_suspend_enabled) {
+dsi_display.c:	if (display->panel->host_config.phy_type == DSI_PHY_TYPE_CPHY) {
+dsi_display.c:	if (!display->panel->ulps_suspend_enabled || !display->ulps_enabled) {
+dsi_display.c:	if (display->panel->ulps_suspend_enabled &&
+dsi_display.c:	if (atomic_read(&display->panel->esd_recovery_pending)) {
+dsi_display.c:	struct dsi_dyn_clk_caps *dyn_clk_caps = &(display->panel->dyn_clk_caps);
+dsi_display.c:				(display->panel->panel_mode ==
+dsi_display.c:		if (display->panel->host_config.force_hs_clk_lane)
+dsi_display.c:			if (display->panel->ulps_suspend_enabled)
+dsi_display.c:			display->panel->ulps_suspend_enabled) {
+dsi_display.c:		if (display->panel->host_config.force_hs_clk_lane)
+dsi_display.c:			display->panel->host_config.force_hs_clk_lane;
+dsi_display.c:			display->panel->host_config.phy_type;
+dsi_display.c:	if (strcmp(display->panel->name,
+dsi_display.c:		INIT_DELAYED_WORK(&display->panel->gamma_read_work,
+dsi_display.c:	cur = display->panel->cur_mode;
+dsi_display.c:		host_cfg = &display->panel->host_config;
+dsi_display.c:	if (!display->panel->video_config.eof_bllp_lp11_en)
+dsi_display.c:	if (display->panel->host_config.force_hs_clk_lane)
+dsi_display.c:	if (display->panel->host_config.phy_type == DSI_PHY_TYPE_CPHY) {
+dsi_display.c:	if (display->panel->host_config.phy_type == DSI_PHY_TYPE_CPHY) {
+dsi_display.c:	is_cphy = (display->panel->host_config.phy_type == DSI_PHY_TYPE_CPHY) ?
+dsi_display.c:	dyn_clk_caps = &display->panel->dyn_clk_caps;
+dsi_display.c:	dyn_clk_caps = &(display->panel->dyn_clk_caps);
+dsi_display.c:	panel_mode = display->panel->cur_mode;
+dsi_display.c: *                      display->panel->cur_mode.
+dsi_display.c:		if (display->panel->cur_mode) {
+dsi_display.c:				display->panel->cur_mode->timing.refresh_rate;
+dsi_display.c:		display->panel->panel_mode = mode->panel_mode;
+dsi_display.c:		if (display->panel->panel_mode == DSI_OP_VIDEO_MODE) {
+dsi_display.c:		} else if (display->panel->panel_mode == DSI_OP_CMD_MODE) {
+dsi_display.c:			(display->panel->panel_mode == DSI_OP_CMD_MODE))
+dsi_display.c:	rc = dsi_pwr_enable_regulator(&display->panel->power_info, true);
+dsi_display.c:				display->panel->name, rc);
+dsi_display.c:	if (display->panel->panel_mode != DSI_OP_CMD_MODE) {
+dsi_display.c:	struct dsi_host_common_cfg *host = &display->panel->host_config;
+dsi_display.c:	if (display->panel->panel_mode == DSI_OP_CMD_MODE) {
+dsi_display.c:	if (display->panel->panel_mode == DSI_OP_CMD_MODE)
+dsi_display.c:	if (display->panel->panel_mode == DSI_OP_CMD_MODE)
+dsi_display.c:	for (i = 0; i < display->panel->host_config.ext_bridge_num; i++) {
+dsi_display.c:		j = display->panel->host_config.ext_bridge_map[i];
+dsi_display.c:	if (display->panel->num_timing_nodes)
+dsi_display.c:		bridge_num = display->panel->host_config.ext_bridge_num;
+dsi_display.c:			k = display->panel->host_config.ext_bridge_map[j];
+dsi_display.c:	panel->host_config.data_lanes = 0;
+dsi_display.c:		panel->host_config.data_lanes |= DSI_DATA_LANE_0;
+dsi_display.c:		panel->host_config.data_lanes |= DSI_DATA_LANE_1;
+dsi_display.c:		panel->host_config.data_lanes |= DSI_DATA_LANE_2;
+dsi_display.c:		panel->host_config.data_lanes |= DSI_DATA_LANE_3;
+dsi_display.c:		panel->host_config.dst_format = DSI_PIXEL_FORMAT_RGB888;
+dsi_display.c:		panel->host_config.dst_format = DSI_PIXEL_FORMAT_RGB666_LOOSE;
+dsi_display.c:		panel->host_config.dst_format = DSI_PIXEL_FORMAT_RGB666;
+dsi_display.c:		panel->host_config.dst_format = DSI_PIXEL_FORMAT_RGB565;
+dsi_display.c:		panel->panel_mode = DSI_OP_VIDEO_MODE;
+dsi_display.c:			panel->video_config.traffic_mode =
+dsi_display.c:			panel->video_config.traffic_mode =
+dsi_display.c:			panel->video_config.traffic_mode =
+dsi_display.c:		panel->video_config.hsa_lp11_en =
+dsi_display.c:		panel->video_config.hbp_lp11_en =
+dsi_display.c:		panel->video_config.hfp_lp11_en =
+dsi_display.c:		panel->video_config.pulse_mode_hsa_he =
+dsi_display.c:		panel->video_config.bllp_lp11_en =
+dsi_display.c:		panel->video_config.eof_bllp_lp11_en =
+dsi_display.c:		panel->panel_mode = DSI_OP_CMD_MODE;
+dsi_display.c:	panel->bl_config.type = DSI_BACKLIGHT_UNKNOWN;
+dsi_display.c:	for (i = 0; i < display->panel->host_config.ext_bridge_num; i++) {
+dsi_display.c:		int j = display->panel->host_config.ext_bridge_map[i];
+dsi_display.c:		if (display->panel->host_config.ext_bridge_num > 1) {
+dsi_display.c:		    display->panel->host_config.ext_bridge_num > 1) {
+dsi_display.c:		display->panel->qsync_min_fps;
+dsi_display.c:	switch (display->panel->panel_mode) {
+dsi_display.c:		if (display->panel->panel_mode_switch_enabled) {
+dsi_display.c:				display->panel->te_using_watchdog_timer |
+dsi_display.c:		if (display->panel->panel_mode_switch_enabled)
+dsi_display.c:			display->panel->te_using_watchdog_timer |
+dsi_display.c:				display->panel->panel_mode);
+dsi_display.c:	if (display->panel->esd_config.esd_enabled)
+dsi_display.c:	host = &display->panel->host_config;
+dsi_display.c:	*count = display->panel->num_display_modes;
+dsi_display.c:	dyn_clk_caps = &(display->panel->dyn_clk_caps);
+dsi_display.c:		if (display->panel->host_config.phy_type ==
+dsi_display.c:		if (display->panel->host_config.phy_type ==
+dsi_display.c:	dyn_clk_caps = &(display->panel->dyn_clk_caps);
+dsi_display.c:	cfg = &(display->panel->host_config);
+dsi_display.c:	total_modes = display->panel->num_display_modes;
+dsi_display.c:	struct dsi_host_common_cfg *host = &display->panel->host_config;
+dsi_display.c:	display_mode_count = display->panel->num_display_modes;
+dsi_display.c:	dyn_clk_caps = &(display->panel->dyn_clk_caps);
+dsi_display.c:	timing_mode_count = display->panel->num_timing_nodes;
+dsi_display.c:			(display->panel->panel_mode == DSI_OP_VIDEO_MODE))
+dsi_display.c:	count = display->panel->num_display_modes;
+dsi_display.c:	if (display->panel && display->panel->cur_mode)
+dsi_display.c:		refresh_rate = display->panel->cur_mode->timing.refresh_rate;
+dsi_display.c:	host = &display->panel->host_config;
+dsi_display.c:	count = display->panel->num_display_modes;
+dsi_display.c:	if (!display->panel || !display->panel->cur_mode) {
+dsi_display.c:	dyn_clk_caps = &(display->panel->dyn_clk_caps);
+dsi_display.c:	if (!display->panel->cur_mode) {
+dsi_display.c:		display->panel->cur_mode =
+dsi_display.c:		if (!display->panel->cur_mode) {
+dsi_display.c:	memcpy(display->panel->cur_mode, &adj_mode, sizeof(adj_mode));
+dsi_display.c:	mode_fps = display->panel->cur_mode->timing.refresh_rate;
+dsi_display.c:	    atomic_read(&display->panel->esd_recovery_pending)) {
+dsi_display.c:	    (display->panel->panel_mode != DSI_OP_VIDEO_MODE) ||
+dsi_display.c:	    atomic_read(&display->panel->esd_recovery_pending)) {
+dsi_display.c:	    (display->panel->panel_mode != DSI_OP_VIDEO_MODE) ||
+dsi_display.c:	    atomic_read(&display->panel->esd_recovery_pending)) {
+dsi_display.c:	if (!display->panel->cur_mode) {
+dsi_display.c:	mode = display->panel->cur_mode;
+dsi_display.c:	if (!display->panel->ulps_suspend_enabled || !display->ulps_enabled) {
+dsi_display.c:	cur_mode = display->panel->cur_mode;
+dsi_display.c:	if (!display->panel->qsync_min_fps) {
+dsi_display.c:	SDE_EVT32(enable, display->panel->qsync_min_fps, rc);
+dsi_display.c:	cur_mode = display->panel->cur_mode;
+dsi_display.c:	if (!display->panel->cur_mode) {
+dsi_display.c:	if (!display->panel->cur_mode) {
+dsi_display.c:		display->panel->panel_initialized = true;
+dsi_display.c:	mode = display->panel->cur_mode;
+dsi_display.c:	} else if (!(display->panel->cur_mode->dsi_mode_flags &
+dsi_display.c:	if (display->panel->cur_mode->dsi_mode_flags & DSI_MODE_FLAG_POMS) {
+dsi_display.c:	memcpy(display->panel->dsc_pps_cmd, pps_cmd, DSI_CMD_PPS_SIZE);
+dsi_display.c:	panel->acl_mode = level;
+dsi_display.c:	return dsi_display->panel->acl_mode;
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:	if (((dsi_display->panel->panel_production_info & 0x0F) == 0x0C) ||
+dsi_display.c:	    ((dsi_display->panel->panel_production_info & 0x0F) == 0x0E) ||
+dsi_display.c:	    ((dsi_display->panel->panel_production_info & 0x0F) == 0x0D))
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:	if ((strcmp(dsi_display->panel->name,
+dsi_display.c:	    (strcmp(dsi_display->panel->name,
+dsi_display.c:	if ((strcmp(dsi_display->panel->name,
+dsi_display.c:	    (strcmp(dsi_display->panel->name,
+dsi_display.c:		panel->panel_code_info = code_info & 0xff;
+dsi_display.c:		pr_err("Code info is 0x%X\n", panel->panel_code_info);
+dsi_display.c:		panel->panel_stage_info = stage_info & 0xff;
+dsi_display.c:		pr_err("Stage info is 0x%X\n", panel->panel_stage_info);
+dsi_display.c:		panel->panel_production_info = prodution_info & 0xff;
+dsi_display.c:		       panel->panel_production_info);
+dsi_display.c:	if (!dsi_panel_initialized(panel) || !panel->cur_mode)
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:		len = panel->panel_min_index;
+dsi_display.c:		if ((panel->panel_year_index > len) ||
+dsi_display.c:		    (panel->panel_mon_index > len) ||
+dsi_display.c:		    (panel->panel_day_index > len) ||
+dsi_display.c:		    (panel->panel_hour_index > len) ||
+dsi_display.c:		    (panel->panel_min_index > len)) {
+dsi_display.c:		memcpy(panel->buf_id, buf, 32);
+dsi_display.c:			2011 + ((buf[panel->panel_year_index - 1] >> 4) & 0x0f);
+dsi_display.c:		panel_mon = buf[panel->panel_mon_index - 1] & 0x0f;
+dsi_display.c:		panel_day = buf[panel->panel_day_index - 1] & 0x3f;
+dsi_display.c:		panel_hour = buf[panel->panel_hour_index - 1] & 0x3f;
+dsi_display.c:		panel_min = buf[panel->panel_min_index - 1] & 0x3f;
+dsi_display.c:		panel_sec = buf[panel->panel_sec_index - 1] & 0x3f;
+dsi_display.c:		panel->panel_year = panel_year;
+dsi_display.c:		panel->panel_mon = panel_mon;
+dsi_display.c:		panel->panel_day = panel_day;
+dsi_display.c:		panel->panel_hour = panel_hour;
+dsi_display.c:		panel->panel_min = panel_min;
+dsi_display.c:		panel->panel_sec = panel_sec;
+dsi_display.c:	return dsi_display->panel->panel_year;
+dsi_display.c:	return dsi_display->panel->panel_mon;
+dsi_display.c:	return dsi_display->panel->panel_day;
+dsi_display.c:	return dsi_display->panel->panel_hour;
+dsi_display.c:	return dsi_display->panel->panel_min;
+dsi_display.c:	return dsi_display->panel->panel_sec;
+dsi_display.c:	return dsi_display->panel->panel_code_info;
+dsi_display.c:	return dsi_display->panel->panel_stage_info;
+dsi_display.c:	return dsi_display->panel->panel_production_info;
+dsi_display.c:	if (!dsi_panel_initialized(panel) || !panel->cur_mode) {
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:		len = panel->panel_min_index;
+dsi_display.c:		if ((panel->panel_year_index > len) ||
+dsi_display.c:		    (panel->panel_mon_index > len) ||
+dsi_display.c:		    (panel->panel_day_index > len) ||
+dsi_display.c:		    (panel->panel_hour_index > len) ||
+dsi_display.c:		    (panel->panel_min_index > len)) {
+dsi_display.c:		memcpy(panel->buf_id, buf, 32);
+dsi_display.c:			2011 + ((buf[panel->panel_year_index - 1] >> 4) & 0x0f);
+dsi_display.c:		panel_mon = buf[panel->panel_mon_index - 1] & 0x0f;
+dsi_display.c:		panel_day = buf[panel->panel_day_index - 1] & 0x3f;
+dsi_display.c:		panel_hour = buf[panel->panel_hour_index - 1] & 0x3f;
+dsi_display.c:		panel_min = buf[panel->panel_min_index - 1] & 0x3f;
+dsi_display.c:		panel_sec = buf[panel->panel_sec_index - 1] & 0x3f;
+dsi_display.c:	panel->hbm_mode = level;
+dsi_display.c:	return dsi_display->panel->hbm_mode;
+dsi_display.c:	if ((strcmp(dsi_display->panel->name,
+dsi_display.c:	    (strcmp(dsi_display->panel->name,
+dsi_display.c:	    (strcmp(dsi_display->panel->name,
+dsi_display.c:		dsi_display->panel->hbm_brightness = 0;
+dsi_display.c:	panel->hbm_brightness = level;
+dsi_display.c:	return dsi_display->panel->hbm_brightness;
+dsi_display.c:	panel->op_force_screenfp = level;
+dsi_display.c:	oneplus_force_screenfp = panel->op_force_screenfp;
+dsi_display.c:	return dsi_display->panel->op_force_screenfp;
+dsi_display.c:	panel->dci_p3_mode = level;
+dsi_display.c:	return dsi_display->panel->dci_p3_mode;
+dsi_display.c:	panel->night_mode = level;
+dsi_display.c:	return dsi_display->panel->night_mode;
+dsi_display.c:	panel->naive_display_p3_mode = level;
+dsi_display.c:	return dsi_display->panel->naive_display_p3_mode;
+dsi_display.c:	panel->naive_display_wide_color_mode = level;
+dsi_display.c:	panel->naive_display_loading_effect_mode = level;
+dsi_display.c:	panel->naive_display_customer_srgb_mode = level;
+dsi_display.c:	panel->naive_display_customer_p3_mode = level;
+dsi_display.c:	panel->naive_display_srgb_color_mode = level;
+dsi_display.c:	return dsi_display->panel->naive_display_srgb_color_mode;
+dsi_display.c:	return dsi_display->panel->naive_display_wide_color_mode;
+dsi_display.c:	return dsi_display->panel->naive_display_loading_effect_mode;
+dsi_display.c:	return dsi_display->panel->naive_display_customer_srgb_mode;
+dsi_display.c:	return dsi_display->panel->naive_display_customer_p3_mode;
+dsi_display.c:	panel->aod_mode = level;
+dsi_display.c:	if ((dsi_display->panel->aod_mode != 5) &&
+dsi_display.c:	    (dsi_display->panel->aod_mode != 4)) {
+dsi_display.c:	return dsi_display->panel->aod_mode;
+dsi_display.c:	panel->aod_disable = disable;
+dsi_display.c:	return dsi_display->panel->aod_disable;
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:	set = &panel->cur_mode->priv_info->cmd_sets[DSI_CMD_SET_ON];
+dsi_display.c:	cmd = &dsi_display->panel->cur_mode->priv_info->cmd_sets[DSI_CMD_SET_ON];
+dsi_display.c:	if ((strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") != 0) &&
+dsi_display.c:	    (strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") != 0)) {
+dsi_display.c:	set = &panel->cur_mode->priv_info->cmd_sets[DSI_CMD_SET_PANEL_COMMAND];
+dsi_display.c:	cmd = &dsi_display->panel->cur_mode->priv_info
+dsi_display.c:	if ((strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") != 0) &&
+dsi_display.c:	    (strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") != 0)) {
+dsi_display.c:	mutex_lock(&panel->panel_lock);
+dsi_display.c:	set = &panel->cur_mode->priv_info->cmd_sets[DSI_CMD_SET_SEED_COMMAND];
+dsi_display.c:	if (strcmp(panel->name, "samsung dsc cmd mode oneplus dsi panel") == 0)
+dsi_display.c:	if (strcmp(panel->name, "samsung sofef03f_m fhd cmd mode dsc dsi panel") == 0)
+dsi_display.c:	mutex_unlock(&panel->panel_lock);
+dsi_display.c:	if ((strcmp(dsi_display->panel->name,
+dsi_display.c:	    (strcmp(dsi_display->panel->name,
+dsi_display.c:	cmd = &dsi_display->panel->cur_mode->priv_info
+dsi_display.c:	if (!dsi_panel_initialized(panel) || !panel->cur_mode) {
+dsi_display.c:		panel->panel_mismatch = 0;
+dsi_display.c:	if (!panel->panel_mismatch_check) {
+dsi_display.c:		panel->panel_mismatch = 0;
+dsi_display.c:	mode = panel->cur_mode;
+dsi_display.c:		panel->panel_mismatch = (panel_id == 0x03) ? 1 : 0;
+dsi_display.c:		panel->panel_mismatch = 0;
+dsi_display.c:	return dsi_display->panel->panel_mismatch;
+dsi_display.c:	if (!display->panel->ulps_suspend_enabled) {
