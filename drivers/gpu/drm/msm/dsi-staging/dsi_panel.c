@@ -5393,14 +5393,10 @@ int dsi_panel_set_hbm_mode(struct dsi_panel *panel, int level)
 			pr_err("This panel does not support HBM mode 5.\n");
 			goto error;
 		} else {
-		HBM_flag = true;
-		rc = dsi_panel_tx_cmd_set(panel, DSI_CMD_SET_HBM_ON_5);
-		pr_debug("Send DSI_CMD_SET_HBM_ON_5 cmds.\n");
-			if (rc) {
-				pr_debug("Failed HBM_ON_5, try again.\n");
-				usleep_range(12000, 13000);
-				rc = dsi_panel_tx_cmd_set(panel, DSI_CMD_SET_HBM_ON_5);
-			}
+			HBM_flag = true;
+			dsi_panel_tx_cmd_set(panel, DSI_CMD_LOADING_EFFECT_ON);
+			dsi_panel_tx_cmd_set(panel, DSI_CMD_SET_HBM_ON_5);
+			pr_err("Send DSI_CMD_SET_HBM_ON_5 cmds.\n");
 		}
 		break;
 
